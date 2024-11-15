@@ -1,0 +1,154 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: CRUD Node.js
+  contact: {}
+host: localhost:3000
+basePath: /
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /get-mahasiswa:
+    get:
+      summary: Get Mahasiswa
+      tags:
+        - Misc
+      operationId: GetMahasiswa
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /get-mahasiswa-by-id:
+    get:
+      summary: Get Mahasiswa by ID
+      tags:
+        - Misc
+      operationId: GetMahasiswabyID
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: string
+          description: 'ID mahasiswa yang akan dicari'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /store-mahasiswa:
+    post:
+      summary: Store Mahasiswa
+      tags:
+        - Misc
+      operationId: StoreMahasiswa
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/StoreMahasiswaRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /update-mahasiswa:
+    post:
+      summary: Update Mahasiswa
+      tags:
+        - Misc
+      operationId: UpdateMahasiswa
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdateMahasiswaRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /delete-mahasiswa:
+    post:
+      summary: Delete Mahasiswa
+      tags:
+        - Misc
+      operationId: DeleteMahasiswa
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/DeleteMahasiswaRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  StoreMahasiswaRequest:
+    title: StoreMahasiswaRequest
+    example:
+      name: Candigoat
+      jurusan: FKKMK
+    type: object
+    properties:
+      name:
+        type: string
+      jurusan:
+        type: string
+    required:
+      - name
+      - jurusan
+  DeleteMahasiswaRequest:
+    title: DeleteMahasiswaRequest
+    example:
+      id: '125'
+    type: object
+    properties:
+      id:
+        type: string
+    required:
+      - id
+  UpdateMahasiswaRequest:
+    title: UpdateMahasiswaRequest
+    example:
+      id: '125'
+      name: Apalah
+      jurusan: Ilkomp
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      jurusan:
+        type: string
+    required:
+      - id
+      - name
+      - jurusan
+tags:
+  - name: Misc
+    description: ''
